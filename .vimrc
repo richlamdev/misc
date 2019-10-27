@@ -56,3 +56,5 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 
 " Flag extra whitespace
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
