@@ -31,7 +31,7 @@ set nowrap              " NO WRAPPING OF THE LINES! (except for Python, see belo
 set hlsearch    	" highlight all matches after search
 set encoding=utf-8      " UTF8 Support
 set nu                  " set numbered lines for columns
-set rnu                 " set relative lines, if both set, line number is displayed instead of 0
+"set rnu                 " set relative lines, if both set, line number is displayed instead of 0
 
 " Enable folding
 set foldmethod=indent
