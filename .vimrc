@@ -32,6 +32,7 @@ set hlsearch    	" highlight all matches after search
 set encoding=utf-8      " UTF8 Support
 set nu                  " set numbered lines for columns
 "set rnu                 " set relative lines, if both set, line number is displayed instead of 0
+set bs=indent,eol,start " allow backspacing over everything in insert mode
 
 " Enable folding
 set foldmethod=indent
@@ -49,6 +50,7 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix |
     \ set textwidth=0 |
     \ set smarttab |
+    \ set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class |
     "\ set wrap linebreak nolist |
 
 "define BadWhitespace before using in a match
@@ -57,4 +59,8 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 " Flag extra whitespace
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+nnoremap <buffer> <F9> :exec '!python3' shellescape(@%, 1)<cr>
+
+set lines=45
+set columns=80
+colorscheme torte
