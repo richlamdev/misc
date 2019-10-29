@@ -9,19 +9,24 @@ syntax on
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
-" set background=dark
+set background=dark
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+" Make the keyboard fast
+set ttyfast
+set timeout timeoutlen=1000 ttimeoutlen=50
+
+set showmode		" always show what mode we're currently editing in
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
-set incsearch		" Incremental search
+set incsearch		" Show search matches while typing
 set autowrite		" Automatically save before commands like :next and :make
 set hidden		" Hide buffers when they are abandoned
 set nobackup            " do not keep a backup file, use versions instead
@@ -30,9 +35,13 @@ set ruler               " show the cursor position all the time
 set nowrap              " NO WRAPPING OF THE LINES! (except for Python, see below)
 set hlsearch    	" highlight all matches after search
 set encoding=utf-8      " UTF8 Support
+set bs=indent,eol,start " allow backspacing over everything in insert mode
 set nu                  " set numbered lines for columns
 "set rnu                 " set relative lines, if both set, line number is displayed instead of 0
-set bs=indent,eol,start " allow backspacing over everything in insert mode
+
+" Do not set lines & columns for console vim....
+"set lines=45
+"set columns=80
 
 " Enable folding
 set foldmethod=indent
@@ -41,7 +50,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " To add the proper PEP8 indentation, add the following to your .vimrc:
-au BufNewFile,BufRead *.py
+autocmd BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -50,17 +59,22 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix |
     \ set textwidth=0 |
     \ set smarttab |
-    \ set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class |
+    \ set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with |
     "\ set wrap linebreak nolist |
 
-"define BadWhitespace before using in a match
+" Define BadWhitespace before using in a match
 highlight BadWhitespace ctermbg=red guibg=darkred
 
 " Flag extra whitespace
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-nnoremap <buffer> <F9> :exec '!python3' shellescape(@%, 1)<cr>
+" highlight all characters past 74 columns
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+  autocmd BufEnter * match OverLength /\%79v.*/
+augroup END
 
-set lines=45
-set columns=80
-colorscheme torte
+" map f9 to excute python script
+autocmd FileType python nnoremap <buffer> <F9> :w<CR> :exec '!python3' shellescape(@%, 1)<CR>
+
+"colorscheme torte
