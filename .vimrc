@@ -68,7 +68,7 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 " Flag extra whitespace
 autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" highlight all characters past 74 columns
+" highlight all characters past 79 columns
 augroup vimrc_autocmds
   autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
   autocmd BufEnter * match OverLength /\%79v.*/
