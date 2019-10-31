@@ -4,7 +4,7 @@
 set nocompatible
 
 syntax on		" Vim5 and later versions support syntax highlighting.
-set background=dark	" Enable dark background within editing are and syntax highlighting
+"set background=dark	" Enable dark background within editing are and syntax highlighting
 set ttyfast		" Make the keyboard fast
 set timeout timeoutlen=1000 ttimeoutlen=50
 set showmode		" always show what mode we're currently editing in
@@ -27,7 +27,7 @@ set nu                  " set numbered lines for columns
 "set rnu                 " set relative lines, if both set, line number is displayed instead of 0
 "set lines=45		" set number of lines - do not use for console VIM
 "set columns=80		" set number of columns - do not use for console VIM
-"set foldmethod=indent  " Enable folding
+"set foldmethod=indent  " Enable folding at indent
 "set foldlevel=99
 "nnoremap <space> za	" Map <space> as folding with the spacebar
 
@@ -61,6 +61,6 @@ augroup vimrc_autocmds
 augroup END
 
 " map f9 to excute python script
-autocmd FileType python nnoremap <buffer> <F9> :w<CR> :exec '!python3' shellescape(@%, 1)<CR>
+nnoremap <buffer> <F9> :w<CR> :exec '!python3' shellescape(@%, 1)<CR>
 
 "colorscheme torte	" Set colorscheme - mostly for windows
