@@ -46,3 +46,18 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 sudo apt-get update
 sudo apt-get install google-chrome-stable
+
+# Start OpenSSH Server
+sudo systemctl ssh enable
+
+# Disable/Remove useless software
+# Enable the GUI Startup Applications to display all hidden apps.
+# Run Startup Applications, then disable backup monitor, desktop sharing, orca screen reader
+sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
+
+sudo systemctl disable avahi-daemon
+sudo chmod -x /usr/lib/evolution/evolution-calendar-factory
+sudo apt purge gnome-software
+sudo apt purge gnome-software-common
+
+
