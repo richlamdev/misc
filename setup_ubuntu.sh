@@ -59,3 +59,6 @@ sudo systemctl disable avahi-daemon
 sudo chmod -x /usr/lib/evolution/evolution-calendar-factory
 sudo apt purge gnome-software
 sudo apt purge gnome-software-common
+sudo apt purge snapd ubuntu-core-launcher squashfs-tools
+
+sudo apt install gnome-calculator gnome-logs gnome-characters gnome-system-monitor
