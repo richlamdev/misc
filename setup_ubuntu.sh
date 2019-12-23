@@ -48,7 +48,7 @@ sudo apt-get update
 sudo apt-get install google-chrome-stable
 
 # Start OpenSSH Server
-sudo systemctl ssh enable
+sudo systemctl enable ssh
 
 # Disable/Remove useless software
 # Enable the GUI Startup Applications to display all hidden apps.
