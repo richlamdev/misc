@@ -19,6 +19,10 @@ cp .vimrc ..
 #dconf dump / > dconf-settings.ini
 dconf load / < dconf-settings.ini
 
+# Remove language related ign from apt-get update
+# Slight increases apt update speed
+sudo sed -e "\$aAcquire::Languages \"none\";" -i_backup /etc/apt/apt.conf.d/00aptitude
+
 # Install software
 sudo apt update
 sudo apt install vim tmux ufw nmap tcpdump exfat-fuse exfat-utils net-tools openssh-server -y
