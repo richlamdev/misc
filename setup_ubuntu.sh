@@ -21,7 +21,7 @@ dconf load / < dconf-settings.ini
 
 # Install software
 sudo apt update
-sudo apt install vim tmux ufw nmap tcpdump exfat-fuse exfat-utils net-tools openssh-server -y
+sudo apt install vim tmux ufw nmap tcpdump exfat-fuse exfat-utils net-tools openssh-server p7zip -y
 
 # Disable IPv6
 sudo sed -e '/GRUB_CMDLINE_LINUX_DEFAULT=/ s/^#*/#/' -i_backup /etc/default/grub
