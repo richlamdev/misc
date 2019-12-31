@@ -7,8 +7,11 @@
 cp .vimrc ..
 
 # Install software
-apt update
-apt install ufw gobuster -y
+apt update && dist-upgrade -y
+apt install ufw gobuster html2text exiftool -y
+
+# Update searchsploit
+searchsploit -u
 
 # Disable IPv6
 sed -e '/GRUB_CMDLINE_LINUX_DEFAULT=/ s/^#*/#/' -i_backup /etc/default/grub
