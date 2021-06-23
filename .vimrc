@@ -55,10 +55,14 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " highlight all characters past 79 columns
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-  autocmd BufEnter * match OverLength /\%79v.*/
-augroup END
+"augroup vimrc_autocmds
+"  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+"  autocmd BufEnter * match OverLength /\%79v.*/
+"augroup END
+
+" highlight a marker at column 80 - for PEP8 
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%80v', 100)
 
 " map f9 to excute python script
 nnoremap <buffer> <F9> :w<CR> :exec '!python3' shellescape(@%, 1)<CR>
