@@ -20,6 +20,8 @@ set history=500         " keep 500 lines of command line history
 set ruler               " show the cursor position all the time
 set nowrap              " NO WRAPPING OF THE LINES! (except for Python, see below)
 set hlsearch    	" highlight all matches after search
+hi Search ctermbg=White   " highlight seached word in white
+hi Search ctermfg=DarkRed " change cursor color to dark red when at the highlighted word
 set encoding=utf-8      " UTF8 Support
 set bs=indent,eol,start " allow backspacing over everything in insert mode
 set nu                  " set numbered lines for columns
@@ -54,15 +56,11 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 " Flag extra whitespace
 autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" highlight all characters past 79 columns
-"augroup vimrc_autocmds
-"  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-"  autocmd BufEnter * match OverLength /\%79v.*/
-"augroup END
-
 " highlight a marker at column 80 - for PEP8 
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%80v', 100)
+
+
 
 " map f9 to excute python script
 nnoremap <buffer> <F9> :w<CR> :exec '!python3' shellescape(@%, 1)<CR>
